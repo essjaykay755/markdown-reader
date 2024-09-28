@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Download } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { renderToString } from "react-dom/server";
@@ -85,15 +85,15 @@ export default function MarkdownEditor() {
           Online Markdown Editor and Previewer
         </h1>
         <Button
-          variant="ghost"
-          size="icon"
+          variant="outline"
+          size="default"
           onClick={toggleTheme}
-          className="w-10 h-10 rounded-full"
+          className="w-12 h-12 rounded-full flex items-center justify-center"
         >
           {theme === "light" ? (
-            <Moon className="h-5 w-5" />
+            <Moon className="h-6 w-6" />
           ) : (
-            <Sun className="h-5 w-5" />
+            <Sun className="h-6 w-6" />
           )}
         </Button>
       </header>
@@ -116,19 +116,19 @@ export default function MarkdownEditor() {
             onClick={() => handleDownload("markdown")}
             className="w-full sm:w-auto"
           >
-            <Download className="mr-2 h-4 w-4" /> Download Markdown
+            Download Markdown
           </Button>
           <Button
             onClick={() => handleDownload("html")}
             className="w-full sm:w-auto"
           >
-            <Download className="mr-2 h-4 w-4" /> Download HTML
+            Download HTML
           </Button>
           <Button
             onClick={() => handleDownload("text")}
             className="w-full sm:w-auto"
           >
-            <Download className="mr-2 h-4 w-4" /> Download Text
+            Download Text
           </Button>
         </div>
       </div>
