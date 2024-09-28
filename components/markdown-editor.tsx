@@ -99,7 +99,10 @@ export default function MarkdownEditor() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="flex justify-between items-center p-4 border-b">
-        <h1 className="text-3xl font-bold"> Online Markdown Editor</h1>
+        <h1 className="text-3xl font-bold">
+          {" "}
+          Online Markdown Editor and Previewer
+        </h1>
         <Button variant="ghost" size="icon" onClick={toggleTheme}>
           {theme === "light" ? (
             <Moon className="h-5 w-5" />

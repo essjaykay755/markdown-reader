@@ -1,4 +1,4 @@
-# 📝 Markdown Editor and Previewer ✨
+# 📝 Online Markdown Editor and Previewer ✨
 
 Welcome to the Markdown Editor and Previewer! This project allows you to write Markdown and see the rendered preview in real-time. It's perfect for bloggers, developers, and anyone who loves working with Markdown.
 
