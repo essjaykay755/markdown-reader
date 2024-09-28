@@ -134,7 +134,7 @@ export default function MarkdownEditor() {
       </div>
       <footer className="text-center p-4 border-t">
         <a
-          href="https://github.com/rocketscience755"
+          href="https://github.com/essjaykay755"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
