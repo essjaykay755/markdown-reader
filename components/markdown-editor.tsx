@@ -133,13 +133,14 @@ export default function MarkdownEditor() {
         </div>
       </div>
       <footer className="text-center p-4 border-t">
+        Made with ❤️ and ☕️ by&nbsp;
         <a
           href="https://github.com/essjaykay755"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
         >
-          Made with ❤️ and ☕️ by Subhojit Karmakar
+          Subhojit Karmakar
         </a>
       </footer>
     </div>
