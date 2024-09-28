@@ -74,24 +74,6 @@ export default function MarkdownEditor() {
     setTheme(theme === "light" ? "dark" : "light");
   }, [theme, setTheme]);
 
-  const markdownCommands = [
-    { command: "# Heading 1", description: "Creates a large heading" },
-    { command: "## Heading 2", description: "Creates a medium heading" },
-    { command: "### Heading 3", description: "Creates a small heading" },
-    { command: "**Bold**", description: "Makes text bold" },
-    { command: "*Italic*", description: "Makes text italic" },
-    { command: "[Link](URL)", description: "Creates a hyperlink" },
-    { command: "![Alt text](image URL)", description: "Inserts an image" },
-    { command: "- List item", description: "Creates an unordered list item" },
-    {
-      command: "1. Numbered item",
-      description: "Creates an ordered list item",
-    },
-    { command: "> Blockquote", description: "Creates a blockquote" },
-    { command: "`Code`", description: "Formats text as inline code" },
-    { command: "---", description: "Inserts a horizontal rule" },
-  ];
-
   if (!mounted) {
     return null;
   }
@@ -99,11 +81,15 @@ export default function MarkdownEditor() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="flex justify-between items-center p-4 border-b">
-        <h1 className="text-3xl font-bold">
-          {" "}
+        <h1 className="text-2xl font-bold">
           Online Markdown Editor and Previewer
         </h1>
-        <Button variant="ghost" size="icon" onClick={toggleTheme}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleTheme}
+          className="w-10 h-10 rounded-full"
+        >
           {theme === "light" ? (
             <Moon className="h-5 w-5" />
           ) : (
@@ -124,44 +110,37 @@ export default function MarkdownEditor() {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
         </div>
       </div>
-      <div className="flex justify-between items-center p-4 border-t">
-        <div className="space-x-2">
-          <Button onClick={() => handleDownload("markdown")}>
+      <div className="flex flex-col sm:flex-row justify-between items-center p-4 border-t gap-2">
+        <div className="flex flex-wrap justify-center sm:justify-start gap-2 w-full sm:w-auto">
+          <Button
+            onClick={() => handleDownload("markdown")}
+            className="w-full sm:w-auto"
+          >
             <Download className="mr-2 h-4 w-4" /> Download Markdown
           </Button>
-          <Button onClick={() => handleDownload("html")}>
+          <Button
+            onClick={() => handleDownload("html")}
+            className="w-full sm:w-auto"
+          >
             <Download className="mr-2 h-4 w-4" /> Download HTML
           </Button>
-          <Button onClick={() => handleDownload("text")}>
+          <Button
+            onClick={() => handleDownload("text")}
+            className="w-full sm:w-auto"
+          >
             <Download className="mr-2 h-4 w-4" /> Download Text
           </Button>
         </div>
       </div>
-      <div className="p-4 border-t">
-        <h2 className="text-xl font-semibold mb-2">Markdown Commands</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-          {markdownCommands.map((cmd, index) => (
-            <div key={index} className="flex flex-col">
-              <code className="text-sm bg-muted p-1 rounded">
-                {cmd.command}
-              </code>
-              <span className="text-xs text-muted-foreground">
-                {cmd.description}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
       <footer className="text-center p-4 border-t">
-        Made with ❤️ and ☕️ by&nbsp;
         <a
-          href="https://github.com/essjaykay755"
+          href="https://github.com/rocketscience755"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
         >
-          Subhojit Karmakar
-        </a>{" "}
+          Made with ❤️ and ☕️ by Subhojit Karmakar
+        </a>
       </footer>
     </div>
   );
