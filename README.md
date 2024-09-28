@@ -72,9 +72,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+<!-- Your Name - [@your_twitter](https://twitter.com/codenamesjk) - email@example.com -->
 
-Project Link: [https://github.com/your-username/markdown-editor](https://github.com/your-username/markdown-editor)
+Project Link: [https://github.com/essjaykay755/markdown-reader](https://github.com/essjaykay755/markdown-reader)
 
 ## 🙏 Acknowledgements
 
