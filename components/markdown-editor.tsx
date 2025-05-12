@@ -400,10 +400,10 @@ export default function MarkdownEditor() {
     <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-gray-50 dark:bg-[#141312]">
       <header className="flex justify-between items-center px-6 py-4 border-b backdrop-blur-sm bg-white/70 dark:bg-[#141312]/90 sticky top-0 z-30 w-full">
         <div className="flex items-center">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center mr-3 shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+          <div className="w-10 h-10 rounded-lg bg-[#e6a900] dark:bg-[#FFBE1A] flex items-center justify-center mr-3 shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1c1918" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
           </div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
+          <h1 className="text-2xl font-bold text-[#e6a900] dark:text-[#FFBE1A]">
             Markdown Editor
           </h1>
         </div>
@@ -422,7 +422,7 @@ export default function MarkdownEditor() {
       </header>
       
       <div className="px-6 py-2 border-b bg-white/70 dark:bg-[#141312]/90 backdrop-blur-sm overflow-x-auto sticky top-[72px] z-20 w-full shadow-sm">
-        <div className="flex space-x-1 items-center max-w-[1800px] mx-auto">
+        <div className="flex space-x-1 items-center w-full">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -528,75 +528,78 @@ export default function MarkdownEditor() {
         </div>
       </div>
       
-      <div id="editor-container" className="flex-grow flex gap-0 p-6 bg-gray-50 dark:bg-[#141312] w-full max-w-[1800px] mx-auto relative">
-        <div className="flex flex-col" style={{ width: `${splitPos}%` }}>
-          <div className="p-2 bg-white dark:bg-[#1c1918] rounded-t-lg border-t border-x border-gray-200 dark:border-gray-800 flex items-center">
-            <div className="flex space-x-1.5 ml-2">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+      {/* Main content container for editor/preview area */}
+      <div className="flex-grow w-full flex flex-col">
+        <div id="editor-container" className="flex-grow flex gap-0 p-6 bg-gray-50 dark:bg-[#141312] w-full relative">
+          <div className="flex flex-col" style={{ width: `${splitPos}%` }}>
+            <div className="p-2 bg-white dark:bg-[#1c1918] rounded-t-lg border-t border-x border-gray-200 dark:border-gray-800 flex items-center">
+              <div className="flex space-x-1.5 ml-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="ml-4 text-sm text-gray-500 dark:text-gray-400">Markdown</div>
             </div>
-            <div className="ml-4 text-sm text-gray-500 dark:text-gray-400">Markdown</div>
+            <Textarea
+              ref={textareaRef}
+              className="flex-grow min-h-[calc(100vh-240px)] font-mono text-sm rounded-none rounded-b-lg border-b border-x border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1c1918] resize-none shadow-md focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:ring-offset-0"
+              value={markdown}
+              onChange={handleInputChange}
+              onSelect={handleTextareaSelect}
+              placeholder="Write your markdown here..."
+            />
           </div>
-          <Textarea
-            ref={textareaRef}
-            className="flex-grow min-h-[calc(100vh-240px)] font-mono text-sm rounded-none rounded-b-lg border-b border-x border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1c1918] resize-none shadow-md focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:ring-offset-0"
-            value={markdown}
-            onChange={handleInputChange}
-            onSelect={handleTextareaSelect}
-            placeholder="Write your markdown here..."
+
+          {/* Resizable Handle */}
+          <div
+            className="w-2 hover:w-3 mx-1 my-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-col-resize rounded-full transition-all duration-150 opacity-50 hover:opacity-100"
+            onMouseDown={handleMouseDown}
           />
-        </div>
 
-        {/* Resizable Handle */}
-        <div
-          className="w-2 hover:w-3 mx-1 my-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-col-resize rounded-full transition-all duration-150 opacity-50 hover:opacity-100"
-          onMouseDown={handleMouseDown}
-        />
-
-        <div className="flex flex-col" style={{ width: `${100 - splitPos}%` }}>
-          <div className="p-2 bg-white dark:bg-[#1c1918] rounded-t-lg border-t border-x border-gray-200 dark:border-gray-800 flex items-center">
-            <div className="flex space-x-1.5 ml-2">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          <div className="flex flex-col" style={{ width: `${100 - splitPos}%` }}>
+            <div className="p-2 bg-white dark:bg-[#1c1918] rounded-t-lg border-t border-x border-gray-200 dark:border-gray-800 flex items-center">
+              <div className="flex space-x-1.5 ml-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="ml-4 text-sm text-gray-500 dark:text-gray-400">Preview</div>
             </div>
-            <div className="ml-4 text-sm text-gray-500 dark:text-gray-400">Preview</div>
-          </div>
-          <div className="border rounded-none rounded-b-lg p-6 min-h-[calc(100vh-240px)] overflow-auto prose dark:prose-invert max-w-none bg-white dark:bg-[#1c1918] border-b border-x border-gray-200 dark:border-gray-800 shadow-md">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+            <div className="border rounded-none rounded-b-lg p-6 min-h-[calc(100vh-240px)] overflow-auto prose dark:prose-invert max-w-none bg-white dark:bg-[#1c1918] border-b border-x border-gray-200 dark:border-gray-800 shadow-md">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+            </div>
           </div>
         </div>
       </div>
       
       <div className="flex flex-col sm:flex-row justify-between items-center px-6 py-4 border-t dark:border-gray-800 bg-white/70 dark:bg-[#141312]/90 backdrop-blur-sm gap-3 w-full">
-        <div className="flex flex-wrap justify-center sm:justify-start gap-2 w-full sm:w-auto max-w-[1800px] mx-auto">
+        <div className="flex flex-wrap justify-center sm:justify-start gap-2 w-full sm:w-auto">
           <Button
             onClick={() => handleDownload("markdown")}
-            className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-200"
+            className="w-full sm:w-auto bg-[#FFBE1A] hover:bg-[#e6a900] text-[#1c1918] shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="h-4 w-4 mr-2 text-[#1c1918]" />
             Markdown
           </Button>
           <Button
             onClick={() => handleDownload("html")}
-            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white shadow-md hover:shadow-lg transition-all duration-200"
+            className="w-full sm:w-auto bg-[#FFBE1A] hover:bg-[#e6a900] text-[#1c1918] shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="h-4 w-4 mr-2 text-[#1c1918]" />
             HTML
           </Button>
           <Button
             onClick={() => handleDownload("text")}
-            className="w-full sm:w-auto bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white shadow-md hover:shadow-lg transition-all duration-200"
+            className="w-full sm:w-auto bg-[#FFBE1A] hover:bg-[#e6a900] text-[#1c1918] shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="h-4 w-4 mr-2 text-[#1c1918]" />
             Text
           </Button>
           <Button
             onClick={() => handleDownload("pdf")}
-            className="w-full sm:w-auto bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-md hover:shadow-lg transition-all duration-200"
+            className="w-full sm:w-auto bg-[#FFBE1A] hover:bg-[#e6a900] text-[#1c1918] shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="h-4 w-4 mr-2 text-[#1c1918]" />
             PDF
           </Button>
         </div>
@@ -614,7 +617,7 @@ export default function MarkdownEditor() {
               href="https://github.com/essjaykay755"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-purple-600 dark:text-purple-400 hover:underline font-medium"
+              className="text-[#FFBE1A] hover:text-[#e6a900] hover:underline font-medium"
             >
               Subhojit Karmakar
             </a>
