@@ -74,15 +74,25 @@
   }
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  html {
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 
 .prose {
-  max-width: 100%;
+  max-width: 100% !important;
+  width: 100%;
 }
 
 .prose pre {
   @apply bg-muted text-muted-foreground p-4 rounded-md overflow-x-auto;
+  max-width: 100%;
 }
 
 .prose code {
